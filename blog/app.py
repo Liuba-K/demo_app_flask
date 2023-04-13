@@ -16,19 +16,7 @@ from blog.api import init_api
 
 app = Flask(__name__)
 
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("SQLALCHEMY_DATABASE_URI")
-
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-
-app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
-
-
-app.config["WTF_CSRF_ENABLED"] = True
-app.config["FLASK_ADMIN_SWATCH"] = "cosmo"
-
-app.config["OPENAPI_URL_PREFIX"] = "/api/swagger"
-app.config["OPENAPI_SWAGGER_UI_PATH"] = "/"
-app.config["OPENAPI_SWAGGER_UI_VERSION"] = "3.22.0"
+app.config.from_object('blog.configs')
 
 app.register_blueprint(users_app, url_prefix="/users")
 app.register_blueprint(articles_app, url_prefix="/articles")
