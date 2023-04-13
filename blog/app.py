@@ -17,7 +17,7 @@ from blog.api import init_api
 app = Flask(__name__)
 
 app.config.from_object('blog.configs')
-
+app.config["SQLALCHEMY_DATABASE_URI"] ="sqlite:///D:\\IT\\projects\\Flask\\sqlite.db"
 app.register_blueprint(users_app, url_prefix="/users")
 app.register_blueprint(articles_app, url_prefix="/articles")
 app.register_blueprint(auth_app, url_prefix="/auth")
