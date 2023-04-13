@@ -292,3 +292,5 @@ pyvenv.cfg
 pip-selfcheck.json
 
 .dockerignore
+
+.idea
