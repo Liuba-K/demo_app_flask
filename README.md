@@ -8,8 +8,8 @@ source venv/bin/activate
 pip install -r requirements.txt
 5. Run command for init db and create user
 flask db upgrade
-flask create-init-user
-flask create-init-tags
+flask create-admin
+flask create-tags
 6. Run flask application
 flask run
 
