@@ -1,4 +1,4 @@
-import os
+
 from blog.security import flask_bcrypt
 from flask import Flask, render_template
 from flask_migrate import Migrate
