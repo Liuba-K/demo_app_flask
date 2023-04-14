@@ -1,6 +1,7 @@
 1. Create new virtual env
 python3 -m venv ./venv
 2. copy example.env to .env and set SECRET_KEY
+                                    SQLALCHEMY_DATABASE_URI
 3. activate virtual env
 source venv/bin/activate
 4. install dependencies
