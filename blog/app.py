@@ -1,5 +1,4 @@
 import os
-
 from blog.security import flask_bcrypt
 from flask import Flask, render_template
 from flask_migrate import Migrate
@@ -13,11 +12,14 @@ from blog.models.database import db
 from blog.admin import admin
 
 from blog.api import init_api
+from blog.comands import create_users, create_tags
 
 app = Flask(__name__)
-
 app.config.from_object('blog.configs')
-app.config["SQLALCHEMY_DATABASE_URI"] ="sqlite:///D:\\IT\\projects\\Flask\\sqlite.db"
+
+app.cli.add_command(create_users)
+app.cli.add_command(create_tags)
+
 app.register_blueprint(users_app, url_prefix="/users")
 app.register_blueprint(articles_app, url_prefix="/articles")
 app.register_blueprint(auth_app, url_prefix="/auth")
@@ -35,21 +37,4 @@ def index():
     return render_template("index.html")
 
 
-@app.cli.command("create-tags")
-def create_tags():
-    """
-    Run in your terminal:
-    ➜ flask create-tags
-    """
-    from blog.models import Tag
-    for name in [
-        "flask",
-        "django",
-        "python",
-        "sqlalchemy",
-        "news",
-    ]:
-        tag = Tag(name=name)
-        db.session.add(tag)
-    db.session.commit()
-    print("created tags")
+

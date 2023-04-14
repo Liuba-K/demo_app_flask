@@ -1,16 +1,10 @@
 import os
-from dotenv import load_dotenv
 
-from blog.enums import EnvType
-
-load_dotenv()
-ENV = os.getenv('FLASK_ENV', default=EnvType.PRODUCTION)
-DEBUG = ENV == EnvType.DEVELOPMENT
-
-SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_DATABASE_URL')
+SQLALCHEMY_DATABASE_URI = 'sqlite:///D:\\IT\\projects\\Flask\\sqlite.db'
+    #os.environ.get('SQLALCHEMY_DATABASE_URL')
 SQLALCHEMY_TRACK_MODIFICATIONS = False
-SECRET_KEY = os.getenv('SECRET_KEY')
-
+SECRET_KEY = 'abcdefg123456'
+    #os.getenv('SECRET_KEY')
 
 WTF_CSRF_ENABLED = True
 FLASK_ADMIN_SWATCH = 'cosmo'
