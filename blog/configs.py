@@ -1,11 +1,9 @@
 import os
-SQLALCHEMY_DATABASE_URI = "sqlite:///db.sqlite"
-#SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URL', "sqlite:///db.sqlite")
 #DATABASE_URL
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-#SECRET_KEY = os.getenv('SECRET_KEY')
-SECRET_KEY = "abcdefg123456"
+SECRET_KEY = os.getenv('SECRET_KEY', "abcdefg123456")
 
 WTF_CSRF_ENABLED = True
 FLASK_ADMIN_SWATCH = 'cosmo'
